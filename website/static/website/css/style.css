@@ -1,0 +1,132 @@
+
+/* 1. Pengaturan dasar seluruh halaman */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #263238;
+    background-color: #f5f7f6;
+}
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* 2. Header dan navigasi */
+.site-header {
+    background-color: #176b45;
+    color: white;
+    padding: 18px 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.site-brand {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-nav a:hover {
+    text-decoration: underline;
+}
+
+/* 3. Area isi halaman */
+main {
+    min-height: 70vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* 4. Bagian konten dan banner */
+.hero,
+.content-section {
+    background-color: white;
+    padding: 28px;
+    margin: 0 auto 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.hero h1 {
+    color: #176b45;
+}
+
+/* 5. Kartu informasi */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.info-card {
+    padding: 20px;
+    border: 1px solid #e0e7e3;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.info-card h3 {
+    margin-top: 0;
+    color: #176b45;
+}
+
+.info-card p {
+    margin-bottom: 0;
+}
+
+/* Penyesuaian kartu pada layar HP */
+@media (max-width: 600px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 5. Footer */
+.site-footer {
+    background-color: #18352a;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* 6. Penyesuaian untuk layar HP */
+@media (max-width: 600px) {
+    .header-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .main-nav {
+        gap: 12px;
+    }
+
+    .hero,
+    .content-section {
+        padding: 20px;
+    }
+}
