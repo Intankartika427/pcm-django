@@ -1,36 +1,52 @@
 
 {% extends "website/base.html" %}
 
-{% block title %}Beranda | PCM Solo Utara{% endblock %}
+{% block title %}
+    {% if profil %}Beranda | {{ profil.nama_singkat }}{% else %}Beranda | PCM Solo Utara{% endif %}
+{% endblock %}
 
 {% block content %}
 
 <section class="hero">
     <p>Selamat Datang</p>
-    <h1>Pimpinan Cabang Muhammadiyah Solo Utara</h1>
-    <h3>Bergerak Mencerahkan, Berkhidmat Untuk Umat</h3>
 
-    <p>
-        Website informasi PCM Solo Utara untuk mengenalkan profil
-        organisasi, kepengurusan, ranting, amal usaha, berita,
-        agenda kegiatan, dan informasi kepada masyarakat.
-    </p>
+    {% if profil %}
+        <h1>{{ profil.nama }}</h1>
+
+        {% if profil.tagline %}
+            <h3>{{ profil.tagline }}</h3>
+        {% endif %}
+
+        <p>{{ profil.deskripsi|default:"Informasi profil organisasi akan segera dilengkapi." }}</p>
+    {% else %}
+        <h1>Pimpinan Cabang Muhammadiyah Solo Utara</h1>
+        <p>Informasi profil organisasi belum tersedia.</p>
+    {% endif %}
 </section>
 
 <section id="profil" class="content-section">
-    <h2>Profil PCM Solo Utara</h2>
+    <h2>Profil Organisasi</h2>
 
-    <p>
-        Pimpinan Cabang Muhammadiyah Solo Utara merupakan salah satu
-        cabang Muhammadiyah di wilayah Kota Surakarta yang menjalankan
-        kegiatan dakwah dan pengembangan Muhammadiyah di wilayah Solo Utara.
-    </p>
+    {% if profil %}
+        {% if profil.sejarah %}
+            <h3>Sejarah</h3>
+            <p>{{ profil.sejarah|linebreaksbr }}</p>
+        {% else %}
+            <p>Informasi sejarah akan dilengkapi kemudian.</p>
+        {% endif %}
 
-    <p>
-        Wilayah ini mencakup sejumlah ranting, antara lain Kadipiro,
-        Banyuanyar, Nusukan, Nusukan Timur, Sumbernayu, Sekip,
-        Sruni, dan Kotapasir.
-    </p>
+        {% if profil.visi %}
+            <h3>Visi</h3>
+            <p>{{ profil.visi|linebreaksbr }}</p>
+        {% endif %}
+
+        {% if profil.misi %}
+            <h3>Misi</h3>
+            <p>{{ profil.misi|linebreaksbr }}</p>
+        {% endif %}
+    {% else %}
+        <p>Data profil belum tersedia.</p>
+    {% endif %}
 </section>
 
 <section id="informasi" class="content-section">
@@ -39,32 +55,22 @@
     <div class="info-grid">
         <article class="info-card">
             <h3>Kepengurusan</h3>
-            <p>
-                Informasi pimpinan PCM Solo Utara periode 2022–2027.
-            </p>
+            <p>Informasi pimpinan PCM Solo Utara periode 2022–2027.</p>
         </article>
 
         <article class="info-card">
             <h3>Ranting Muhammadiyah</h3>
-            <p>
-                Informasi delapan Pimpinan Ranting Muhammadiyah
-                di wilayah Solo Utara.
-            </p>
+            <p>Informasi delapan Pimpinan Ranting Muhammadiyah.</p>
         </article>
 
         <article class="info-card">
             <h3>Amal Usaha</h3>
-            <p>
-                Informasi amal usaha di bidang pendidikan,
-                ekonomi, sosial, dan dakwah.
-            </p>
+            <p>Informasi amal usaha di bidang pendidikan, ekonomi, sosial, dan dakwah.</p>
         </article>
 
         <article class="info-card">
             <h3>Berita dan Agenda</h3>
-            <p>
-                Informasi berita dan agenda kegiatan PCM Solo Utara.
-            </p>
+            <p>Informasi berita dan agenda kegiatan PCM Solo Utara.</p>
         </article>
     </div>
 </section>
@@ -72,20 +78,21 @@
 <section id="kontak" class="content-section">
     <h2>Kontak PCM Solo Utara</h2>
 
-    <p>
-        <strong>Alamat:</strong>
-        Jl. Singosari Utara I No. 13, Nusukan, Surakarta.
-    </p>
+    {% if profil %}
+        {% if profil.alamat %}
+            <p><strong>Alamat:</strong> {{ profil.alamat }}</p>
+        {% endif %}
 
-    <p>
-        <strong>Email:</strong>
-        pcmsoloutara@gmail.com
-    </p>
+        {% if profil.email %}
+            <p><strong>Email:</strong> {{ profil.email }}</p>
+        {% endif %}
 
-    <p>
-        <strong>Telepon:</strong>
-        0857-0245-1925 / 0877-3460-5640
-    </p>
+        {% if profil.telepon %}
+            <p><strong>Telepon:</strong> {{ profil.telepon }}</p>
+        {% endif %}
+    {% else %}
+        <p>Informasi kontak belum tersedia.</p>
+    {% endif %}
 </section>
 
 {% endblock %}

@@ -1,5 +1,12 @@
 from django.shortcuts import render
+from .models import ProfilOrganisasi
 
 
 def home(request):
-    return render(request, "website/home.html")
+    profil = ProfilOrganisasi.objects.first()
+
+    context = {
+        "profil": profil,
+    }
+
+    return render(request, "website/home.html", context)
