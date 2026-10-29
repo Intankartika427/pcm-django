@@ -60,3 +60,33 @@ class PimpinanRanting(models.Model):
 
     def __str__(self):
         return self.nama
+
+
+class AmalUsaha(models.Model):
+    PILIHAN_BIDANG = [
+        ("pendidikan", "Pendidikan"),
+        ("kesehatan", "Kesehatan"),
+        ("sosial", "Sosial"),
+        ("ekonomi", "Ekonomi"),
+    ]
+
+    nama = models.CharField(max_length=200)
+    bidang = models.CharField(
+        max_length=20,
+        choices=PILIHAN_BIDANG,
+    )
+    deskripsi = models.TextField(blank=True)
+    alamat = models.TextField(blank=True)
+    gambar = models.ImageField(
+        upload_to="amal_usaha/",
+        blank=True,
+        null=True,
+    )
+
+    class Meta:
+        verbose_name = "Amal Usaha"
+        verbose_name_plural = "Data Amal Usaha"
+        ordering = ["bidang", "nama"]
+
+    def __str__(self):
+        return self.nama

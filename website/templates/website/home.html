@@ -106,6 +106,40 @@
 </section>
 
 
+<section id="amal-usaha" class="content-section">
+    <h2>Amal Usaha Muhammadiyah</h2>
+    <p>Daftar amal usaha di wilayah PCM Solo Utara.</p>
+
+    {% if daftar_amal_usaha %}
+        <div class="info-grid">
+            {% for amal in daftar_amal_usaha %}
+                <article class="info-card">
+                    {% if amal.gambar %}
+                        <img
+                            src="{{ amal.gambar.url }}"
+                            alt="{{ amal.nama }}"
+                            class="pimpinan-photo"
+                        >
+                    {% endif %}
+
+                    <h3>{{ amal.nama }}</h3>
+                    <p><strong>Bidang:</strong> {{ amal.get_bidang_display }}</p>
+
+                    {% if amal.deskripsi %}
+                        <p>{{ amal.deskripsi|linebreaksbr }}</p>
+                    {% endif %}
+
+                    {% if amal.alamat %}
+                        <p><strong>Alamat:</strong> {{ amal.alamat|linebreaksbr }}</p>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Data Amal Usaha belum tersedia.</p>
+    {% endif %}
+</section>
+
 <section id="informasi" class="content-section">
     <h2>Informasi Organisasi</h2>
 
