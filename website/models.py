@@ -24,3 +24,23 @@ class ProfilOrganisasi(models.Model):
 
     def __str__(self):
         return self.nama
+
+
+class Pimpinan(models.Model):
+    nama = models.CharField(max_length=200)
+    jabatan = models.CharField(max_length=100)
+    periode = models.CharField(max_length=20, default="2022–2027")
+    foto = models.ImageField(
+        upload_to="pimpinan/",
+        blank=True,
+        null=True,
+    )
+    urutan = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Pimpinan"
+        verbose_name_plural = "Data Pimpinan"
+        ordering = ["urutan", "nama"]
+
+    def __str__(self):
+        return f"{self.nama} - {self.jabatan}"

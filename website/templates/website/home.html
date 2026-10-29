@@ -49,6 +49,33 @@
     {% endif %}
 </section>
 
+
+<section id="kepengurusan" class="content-section">
+    <h2>Susunan Pengurus PCM Solo Utara</h2>
+    <p>Periode 2022–2027</p>
+
+    {% if daftar_pimpinan %}
+        <div class="info-grid">
+            {% for pimpinan in daftar_pimpinan %}
+                <article class="info-card">
+                    {% if pimpinan.foto %}
+                        <img
+                            src="{{ pimpinan.foto.url }}"
+                            alt="Foto {{ pimpinan.nama }}"
+                            class="pimpinan-photo"
+                        >
+                    {% endif %}
+
+                    <h3>{{ pimpinan.nama }}</h3>
+                    <p>{{ pimpinan.jabatan }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Data kepengurusan belum tersedia.</p>
+    {% endif %}
+</section>
+
 <section id="informasi" class="content-section">
     <h2>Informasi Organisasi</h2>
 
