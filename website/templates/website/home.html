@@ -76,6 +76,36 @@
     {% endif %}
 </section>
 
+<section id="ranting" class="content-section">
+    <h2>Pimpinan Ranting Muhammadiyah</h2>
+    <p>Daftar ranting Muhammadiyah di wilayah PCM Solo Utara.</p>
+
+    {% if daftar_ranting %}
+        <div class="info-grid">
+            {% for ranting in daftar_ranting %}
+                <article class="info-card">
+                    <h3>{{ ranting.nama }}</h3>
+
+                    {% if ranting.ketua %}
+                        <p><strong>Ketua:</strong> {{ ranting.ketua }}</p>
+                    {% endif %}
+
+                    {% if ranting.alamat %}
+                        <p><strong>Alamat:</strong> {{ ranting.alamat|linebreaksbr }}</p>
+                    {% endif %}
+
+                    {% if ranting.telepon %}
+                        <p><strong>Telepon:</strong> {{ ranting.telepon }}</p>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Data Pimpinan Ranting belum tersedia.</p>
+    {% endif %}
+</section>
+
+
 <section id="informasi" class="content-section">
     <h2>Informasi Organisasi</h2>
 

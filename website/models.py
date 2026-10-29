@@ -44,3 +44,19 @@ class Pimpinan(models.Model):
 
     def __str__(self):
         return f"{self.nama} - {self.jabatan}"
+
+
+class PimpinanRanting(models.Model):
+    nama = models.CharField(max_length=200)
+    ketua = models.CharField(max_length=200, blank=True)
+    alamat = models.TextField(blank=True)
+    telepon = models.CharField(max_length=30, blank=True)
+    urutan = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Pimpinan Ranting"
+        verbose_name_plural = "Data Pimpinan Ranting"
+        ordering = ["urutan", "nama"]
+
+    def __str__(self):
+        return self.nama
