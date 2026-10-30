@@ -1,0 +1,43 @@
+```django
+{% extends "website/base.html" %}
+
+{% block title %}Pimpinan Ranting | PCM Solo Utara{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="section-eyebrow">Struktur Organisasi</p>
+        <h1>Pimpinan Ranting Muhammadiyah</h1>
+        <p>Mengenal delapan Pimpinan Ranting Muhammadiyah di wilayah PCM Solo Utara.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Daftar Pimpinan Ranting</h2>
+            <p>Berikut daftar ranting yang berada di bawah PCM Solo Utara.</p>
+        </div>
+
+        <div class="card-grid">
+            {% for ranting in daftar_ranting %}
+                <article class="info-card">
+                    <h3>{{ ranting.nama }}</h3>
+                    <p><strong>Ketua:</strong> {{ ranting.ketua }}</p>
+
+                    {% if ranting.alamat %}
+                        <p><strong>Alamat:</strong> {{ ranting.alamat }}</p>
+                    {% endif %}
+
+                    {% if ranting.telepon %}
+                        <p><strong>Telepon:</strong> {{ ranting.telepon }}</p>
+                    {% endif %}
+                </article>
+            {% empty %}
+                <p>Data Pimpinan Ranting belum tersedia.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+```

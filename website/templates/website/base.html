@@ -15,16 +15,22 @@
     <header class="site-header">
         <div class="container header-content">
             <a href="{% url 'website:home' %}" class="site-brand">
-                PCM Solo Utara
+                <img
+                    src="{% static 'website/img/logo-muhammadiyah.svg' %}"
+                    alt="Logo Muhammadiyah"
+                    class="site-logo"
+                >
+                <span>PCM Solo Utara</span>
             </a>
 
             <nav class="main-nav">
                 <a href="{% url 'website:home' %}">Beranda</a>
                 <a href="{% url 'website:daftar_berita' %}">Berita</a>
                 <a href="{% url 'website:daftar_agenda' %}">Agenda</a>
-                <a href="{% url 'website:home' %}#profil">Profil</a>
+                <a href="{% url 'website:profil' %}">Profil</a>
+                <a href="{% url 'website:pimpinan' %}">Pimpinan</a>
                 <a href="{% url 'website:home' %}#informasi">Informasi</a>
-                <a href="{% url 'website:home' %}#ranting">Ranting</a>
+                <a href="{% url 'website:ranting' %}">Ranting</a>
                 <a href="{% url 'website:home' %}#kontak">Kontak</a>
             </nav>
         </div>
@@ -40,6 +46,21 @@
             <p>
                 &copy; 2026 PCM Solo Utara.
                 Bergerak Mencerahkan, Berkhidmat Untuk Umat.
+            </p>
+
+            <p class="disclaimer">
+                Website ini dibuat untuk memenuhi tugas kuliah
+                Pemrograman Web Berbasis Framework dan bukan
+                merupakan website resmi PCM Solo Utara.
+            </p>
+
+            <p class="logo-credit">
+                Logo Muhammadiyah:
+                <a href="https://commons.wikimedia.org/wiki/File:Muhammadiyah.svg"
+                   target="_blank" rel="noopener noreferrer">
+                    Hibensis, Wikimedia Commons
+                </a>
+                — CC BY-SA 4.0.
             </p>
         </div>
     </footer>

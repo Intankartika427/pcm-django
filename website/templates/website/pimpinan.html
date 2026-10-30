@@ -1,0 +1,43 @@
+```django
+{% extends "website/base.html" %}
+
+{% block title %}Pimpinan | PCM Solo Utara{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="section-eyebrow">Struktur Organisasi</p>
+        <h1>Pimpinan PCM Solo Utara</h1>
+        <p>Susunan Pimpinan Cabang Muhammadiyah Solo Utara periode 2022–2027.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Daftar Pimpinan</h2>
+            <p>Berikut susunan pimpinan dan anggota PCM Solo Utara.</p>
+        </div>
+
+        <div class="card-grid">
+            {% for pimpinan in daftar_pimpinan %}
+                <article class="info-card">
+                    {% if pimpinan.foto %}
+                        <img
+                            src="{{ pimpinan.foto.url }}"
+                            alt="Foto {{ pimpinan.nama }}"
+                            class="pimpinan-photo"
+                        >
+                    {% endif %}
+
+                    <h3>{{ pimpinan.nama }}</h3>
+                    <p>{{ pimpinan.jabatan }}</p>
+                    <small>Periode {{ pimpinan.periode }}</small>
+                </article>
+            {% empty %}
+                <p>Data pimpinan belum tersedia.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

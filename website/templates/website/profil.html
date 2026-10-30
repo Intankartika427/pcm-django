@@ -1,0 +1,64 @@
+
+{% extends "website/base.html" %}
+
+{% block title %}Profil Organisasi | PCM Solo Utara{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="section-eyebrow">Tentang Kami</p>
+        <h1>Profil Organisasi</h1>
+        <p>Mengenal lebih dekat Pimpinan Cabang Muhammadiyah Solo Utara.</p>
+    </div>
+</section>
+
+<section class="content-section">
+    <div class="container">
+        {% if profil %}
+            <div class="profile-detail">
+                {% if profil.gambar %}
+                    <img src="{{ profil.gambar.url }}" alt="{{ profil.nama }}">
+                {% endif %}
+
+                <div>
+                    <h2>{{ profil.nama }}</h2>
+                    <p class="profile-tagline">{{ profil.tagline }}</p>
+                    <p>{{ profil.deskripsi|linebreaks }}</p>
+                </div>
+            </div>
+
+            {% if profil.sejarah %}
+                <div class="profile-section">
+                    <h2>Sejarah Organisasi</h2>
+                    {{ profil.sejarah|linebreaks }}
+                </div>
+            {% endif %}
+
+            {% if profil.visi %}
+                <div class="profile-section">
+                    <h2>Visi</h2>
+                    {{ profil.visi|linebreaks }}
+                </div>
+            {% endif %}
+
+            {% if profil.misi %}
+                <div class="profile-section">
+                    <h2>Misi</h2>
+                    {{ profil.misi|linebreaks }}
+                </div>
+            {% endif %}
+
+            {% if profil.alamat or profil.telepon or profil.email %}
+                <div class="profile-section">
+                    <h2>Informasi Kontak</h2>
+                    {% if profil.alamat %}<p><strong>Alamat:</strong> {{ profil.alamat }}</p>{% endif %}
+                    {% if profil.telepon %}<p><strong>Telepon:</strong> {{ profil.telepon }}</p>{% endif %}
+                    {% if profil.email %}<p><strong>Email:</strong> {{ profil.email }}</p>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            <p>Data profil organisasi belum tersedia.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

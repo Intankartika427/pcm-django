@@ -10,7 +10,30 @@ from .models import (
     Agenda,
 )
 
+def profil(request):
+    data_profil = ProfilOrganisasi.objects.first()
 
+    context = {
+        "profil": data_profil,
+    }
+
+    return render(request, "website/profil.html", context)
+
+def daftar_pimpinan(request):
+    daftar_pimpinan = Pimpinan.objects.all()
+    context = {
+        "daftar_pimpinan": daftar_pimpinan,
+    }
+    return render(request, "website/pimpinan.html", context)
+
+def daftar_ranting(request):
+    daftar_ranting = PimpinanRanting.objects.all()
+
+    context = {
+        "daftar_ranting": daftar_ranting,
+    }
+
+    return render(request, "website/ranting.html", context)
 
 def home(request):
     profil = ProfilOrganisasi.objects.first()
