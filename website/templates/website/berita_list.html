@@ -1,0 +1,48 @@
+
+{% extends "website/base.html" %}
+
+{% block title %}Berita | PCM Solo Utara{% endblock %}
+
+{% block content %}
+<section class="container content-section">
+    <h1>Berita PCM Solo Utara</h1>
+    <p>Informasi dan kabar terbaru dari PCM Solo Utara.</p>
+
+    <div class="info-grid">
+        {% for item in daftar_berita %}
+            <article class="info-card">
+                {% if item.gambar %}
+                    <img
+                        src="{{ item.gambar.url }}"
+                        alt="{{ item.judul }}"
+                    >
+                {% endif %}
+
+                <h3>
+                    <a href="{% url 'website:detail_berita' item.slug %}">
+                        {{ item.judul }}
+                    </a>
+                </h3>
+
+                <p>
+                    <small>
+                        {{ item.tanggal_publikasi|date:"d M Y" }}
+                    </small>
+                </p>
+
+                <p>
+                    {{ item.ringkasan|default:item.isi|truncatewords:30 }}
+                </p>
+
+                <p>
+                    <a href="{% url 'website:detail_berita' item.slug %}">
+                        Baca Selengkapnya &rarr;
+                    </a>
+                </p>
+            </article>
+        {% empty %}
+            <p>Belum ada berita yang dipublikasikan.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,40 @@
+
+{% extends "website/base.html" %}
+
+{% block title %}{{ berita.judul }} | PCM Solo Utara{% endblock %}
+
+{% block content %}
+<article class="container berita-detail">
+    <p>
+        <a href="{% url 'website:daftar_berita' %}">
+            &larr; Kembali ke daftar berita
+        </a>
+    </p>
+
+    <h1>{{ berita.judul }}</h1>
+
+    <p class="tanggal-berita">
+        <small>
+            {{ berita.tanggal_publikasi|date:"d M Y" }}
+            {% if berita.penulis %}
+                | Ditulis oleh {{ berita.penulis }}
+            {% endif %}
+        </small>
+    </p>
+
+    {% if berita.gambar %}
+        <img
+            src="{{ berita.gambar.url }}"
+            alt="{{ berita.judul }}"
+        >
+    {% endif %}
+
+    {% if berita.ringkasan %}
+        <p><strong>{{ berita.ringkasan }}</strong></p>
+    {% endif %}
+
+    <div>
+        {{ berita.isi|linebreaks }}
+    </div>
+</article>
+{% endblock %}

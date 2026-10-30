@@ -166,6 +166,53 @@
     </div>
 </section>
 
+
+<section id="berita" class="content-section">
+    <h2>Berita Terbaru</h2>
+    <p>Ikuti kabar dan kegiatan terbaru PCM Solo Utara.</p>
+
+    {% if berita_terbaru %}
+        <div class="info-grid">
+            {% for berita in berita_terbaru %}
+                <article class="info-card">
+                    {% if berita.gambar %}
+                        <img
+                            src="{{ berita.gambar.url }}"
+                            alt="{{ berita.judul }}"
+                            class="pimpinan-photo"
+                        >
+                    {% endif %}
+
+                    <h3>{{ berita.judul }}</h3>
+
+                    <p>
+                        <small>
+                            {{ berita.tanggal_publikasi|date:"d M Y" }}
+                        </small>
+                    </p>
+
+                    <p>
+                        {{ berita.ringkasan|default:berita.isi|truncatewords:25 }}
+                    </p>
+
+                    <a href="{% url 'website:detail_berita' berita.slug %}">
+                        Baca Selengkapnya &rarr;
+                    </a>
+                </article>
+            {% endfor %}
+        </div>
+
+        <p>
+            <a href="{% url 'website:daftar_berita' %}">
+                Lihat Semua Berita
+            </a>
+        </p>
+    {% else %}
+        <p>Belum ada berita yang dipublikasikan.</p>
+    {% endif %}
+</section>
+
+
 <section id="kontak" class="content-section">
     <h2>Kontak PCM Solo Utara</h2>
 

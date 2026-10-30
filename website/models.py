@@ -90,3 +90,29 @@ class AmalUsaha(models.Model):
 
     def __str__(self):
         return self.nama
+
+
+
+class Berita(models.Model):
+    judul = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=220, unique=True)
+    ringkasan = models.TextField(blank=True)
+    isi = models.TextField()
+    gambar = models.ImageField(
+        upload_to="berita/",
+        blank=True,
+        null=True,
+    )
+    penulis = models.CharField(max_length=100, blank=True)
+    tanggal_publikasi = models.DateTimeField(
+        auto_now_add=True,
+    )
+    dipublikasikan = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = "Berita"
+        verbose_name_plural = "Data Berita"
+        ordering = ["-tanggal_publikasi"]
+
+    def __str__(self):
+        return self.judul

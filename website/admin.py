@@ -26,3 +26,27 @@ class AmalUsahaAdmin(admin.ModelAdmin):
     list_display = ("nama", "bidang", "alamat")
     list_filter = ("bidang",)
     search_fields = ("nama", "alamat")
+
+
+
+from django.contrib import admin
+from .models import (
+    ProfilOrganisasi,
+    Pimpinan,
+    PimpinanRanting,
+    AmalUsaha,
+    Berita,
+)
+
+
+@admin.register(Berita)
+class BeritaAdmin(admin.ModelAdmin):
+    list_display = (
+        "judul",
+        "penulis",
+        "tanggal_publikasi",
+        "dipublikasikan",
+    )
+    list_filter = ("dipublikasikan", "tanggal_publikasi")
+    search_fields = ("judul", "ringkasan", "isi", "penulis")
+    prepopulated_fields = {"slug": ("judul",)}
