@@ -191,3 +191,76 @@ main {
     color: #718078;
     font-size: 0.9rem;
 }
+
+.agenda-section {
+    padding: 60px 0;
+}
+
+.agenda-section h1 {
+    margin-bottom: 12px;
+    color: #14532d;
+    font-size: 32px;
+}
+
+.agenda-intro {
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.agenda-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.agenda-card {
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.agenda-card h2 {
+    margin-bottom: 16px;
+    color: #166534;
+    font-size: 21px;
+}
+
+.agenda-card p {
+    margin-bottom: 14px;
+    line-height: 1.7;
+}
+
+.agenda-waktu {
+    color: #444;
+}
+
+.agenda-keterangan {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #e5e7eb;
+    line-height: 1.7;
+}
+
+
+/* Status Agenda */
+
+.agenda-status {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.agenda-mendatang {
+    color: #166534;
+    background-color: #dcfce7;
+}
+
+.agenda-lampau {
+    color: #991b1b;
+    background-color: #fee2e2;
+}

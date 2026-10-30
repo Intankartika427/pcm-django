@@ -166,6 +166,53 @@
     </div>
 </section>
 
+<section id="agenda" class="content-section">
+    <h2>Agenda Kegiatan</h2>
+    <p>Informasi kegiatan dan agenda PCM Solo Utara.</p>
+
+    {% if daftar_agenda %}
+        <div class="info-grid">
+            {% for item in daftar_agenda|slice:":3" %}
+                <article class="info-card">
+
+    {% if item.waktu_mulai > now %}
+        <span class="agenda-status agenda-mendatang">
+            Akan Datang
+        </span>
+    {% else %}
+        <span class="agenda-status agenda-lampau">
+            Sudah Berlalu
+        </span>
+    {% endif %}
+
+    <h3>{{ item.nama_kegiatan }}</h3>
+
+                    <p>
+                        <strong>Waktu:</strong><br>
+                        {{ item.waktu_mulai|date:"l, d F Y, H:i" }} WIB
+                    </p>
+
+                    <p>
+                        <strong>Tempat:</strong><br>
+                        {{ item.tempat|linebreaksbr }}
+                    </p>
+
+                    {% if item.keterangan %}
+                        <p>{{ item.keterangan|truncatewords:30 }}</p>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        </div>
+
+        <p>
+            <a href="{% url 'website:daftar_agenda' %}">
+                Lihat Semua Agenda &rarr;
+            </a>
+        </p>
+    {% else %}
+        <p>Belum ada agenda kegiatan yang tersedia.</p>
+    {% endif %}
+</section>
 
 <section id="berita" class="content-section">
     <h2>Berita Terbaru</h2>

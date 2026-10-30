@@ -1,6 +1,15 @@
-
 from django.contrib import admin
-from .models import ProfilOrganisasi, Pimpinan, PimpinanRanting, AmalUsaha
+
+from .models import (
+    ProfilOrganisasi,
+    Pimpinan,
+    PimpinanRanting,
+    AmalUsaha,
+    Berita,
+    Agenda,
+)
+
+
 @admin.register(ProfilOrganisasi)
 class ProfilOrganisasiAdmin(admin.ModelAdmin):
     list_display = ("nama", "nama_singkat", "email")
@@ -13,6 +22,7 @@ class PimpinanAdmin(admin.ModelAdmin):
     list_filter = ("periode", "jabatan")
     search_fields = ("nama", "jabatan")
     ordering = ("urutan", "nama")
+
 
 @admin.register(PimpinanRanting)
 class PimpinanRantingAdmin(admin.ModelAdmin):
@@ -28,17 +38,6 @@ class AmalUsahaAdmin(admin.ModelAdmin):
     search_fields = ("nama", "alamat")
 
 
-
-from django.contrib import admin
-from .models import (
-    ProfilOrganisasi,
-    Pimpinan,
-    PimpinanRanting,
-    AmalUsaha,
-    Berita,
-)
-
-
 @admin.register(Berita)
 class BeritaAdmin(admin.ModelAdmin):
     list_display = (
@@ -50,3 +49,11 @@ class BeritaAdmin(admin.ModelAdmin):
     list_filter = ("dipublikasikan", "tanggal_publikasi")
     search_fields = ("judul", "ringkasan", "isi", "penulis")
     prepopulated_fields = {"slug": ("judul",)}
+
+
+@admin.register(Agenda)
+class AgendaAdmin(admin.ModelAdmin):
+    list_display = ("nama_kegiatan", "waktu_mulai", "tempat")
+    list_filter = ("waktu_mulai",)
+    search_fields = ("nama_kegiatan", "tempat", "keterangan")
+    ordering = ("-waktu_mulai",)

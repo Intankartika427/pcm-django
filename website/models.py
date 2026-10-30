@@ -116,3 +116,19 @@ class Berita(models.Model):
 
     def __str__(self):
         return self.judul
+
+
+
+class Agenda(models.Model):
+    nama_kegiatan = models.CharField(max_length=255)
+    waktu_mulai = models.DateTimeField()
+    tempat = models.TextField()
+    keterangan = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = "Agenda"
+        verbose_name_plural = "Data Agenda"
+        ordering = ["-waktu_mulai"]
+
+    def __str__(self):
+        return self.nama_kegiatan

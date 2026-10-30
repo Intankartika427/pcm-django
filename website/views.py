@@ -1,4 +1,4 @@
-
+from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
 
 from .models import (
@@ -7,7 +7,9 @@ from .models import (
     PimpinanRanting,
     AmalUsaha,
     Berita,
+    Agenda,
 )
+
 
 
 def home(request):
@@ -15,6 +17,8 @@ def home(request):
     daftar_pimpinan = Pimpinan.objects.all()
     daftar_ranting = PimpinanRanting.objects.all()
     daftar_amal_usaha = AmalUsaha.objects.all()
+
+    daftar_agenda = Agenda.objects.all().order_by("-waktu_mulai")
 
     berita_terbaru = Berita.objects.filter(
         dipublikasikan=True
@@ -26,10 +30,10 @@ def home(request):
         "daftar_ranting": daftar_ranting,
         "daftar_amal_usaha": daftar_amal_usaha,
         "berita_terbaru": berita_terbaru,
+        "daftar_agenda": daftar_agenda,
     }
 
     return render(request, "website/home.html", context)
-
 
 def daftar_berita(request):
     berita = Berita.objects.filter(
@@ -55,3 +59,13 @@ def detail_berita(request, slug):
     }
 
     return render(request, "website/berita_detail.html", context)
+
+def daftar_agenda(request):
+    agenda = Agenda.objects.all().order_by("-waktu_mulai")
+
+    context = {
+        "daftar_agenda": agenda,
+        "now": timezone.now(),
+    }
+
+    return render(request, "website/agenda_list.html", context)
