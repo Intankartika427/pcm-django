@@ -34,28 +34,49 @@
                 </div>
             {% endif %}
 
-            {% if profil.visi %}
-                <div class="profile-section">
-                    <h2>Visi</h2>
-                    {{ profil.visi|linebreaks }}
-                </div>
-            {% endif %}
 
-            {% if profil.misi %}
-                <div class="profile-section">
-                    <h2>Misi</h2>
-                    {{ profil.misi|linebreaks }}
-                </div>
-            {% endif %}
+<div class="profile-section">
+    <h2>Visi</h2>
+    {% if profil.visi %}
+        {{ profil.visi|linebreaks }}
+    {% else %}
+        <p>Informasi visi belum tersedia.</p>
+    {% endif %}
+</div>
 
-            {% if profil.alamat or profil.telepon or profil.email %}
-                <div class="profile-section">
-                    <h2>Informasi Kontak</h2>
-                    {% if profil.alamat %}<p><strong>Alamat:</strong> {{ profil.alamat }}</p>{% endif %}
-                    {% if profil.telepon %}<p><strong>Telepon:</strong> {{ profil.telepon }}</p>{% endif %}
-                    {% if profil.email %}<p><strong>Email:</strong> {{ profil.email }}</p>{% endif %}
-                </div>
-            {% endif %}
+<div class="profile-section">
+    <h2>Misi</h2>
+    {% if profil.misi %}
+        {{ profil.misi|linebreaks }}
+    {% else %}
+        <p>Informasi misi belum tersedia.</p>
+    {% endif %}
+</div>
+
+
+
+<div class="profile-section">
+    <h2>Informasi Kontak</h2>
+
+    {% if profil.alamat %}
+        <p><strong>Alamat:</strong> {{ profil.alamat|linebreaksbr }}</p>
+    {% else %}
+        <p>Informasi alamat belum tersedia.</p>
+    {% endif %}
+
+    {% if profil.telepon %}
+        <p><strong>Telepon:</strong> {{ profil.telepon }}</p>
+    {% else %}
+        <p>Informasi telepon belum tersedia.</p>
+    {% endif %}
+
+    {% if profil.email %}
+        <p><strong>Email:</strong> {{ profil.email }}</p>
+    {% else %}
+        <p>Informasi email belum tersedia.</p>
+    {% endif %}
+</div>
+
         {% else %}
             <p>Data profil organisasi belum tersedia.</p>
         {% endif %}
