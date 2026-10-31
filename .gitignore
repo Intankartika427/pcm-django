@@ -15,6 +15,12 @@ venv/
 *.log
 db.sqlite3
 media/
+!media/
+media/*
+!media/amal_usaha/
+!media/berita/
+!media/pimpinan/
+!media/profil/
 
 # IDE
 .vscode/
