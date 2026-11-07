@@ -7,6 +7,7 @@ from .models import (
     AmalUsaha,
     Berita,
     Agenda,
+    Dokumen,
 )
 
 
@@ -57,3 +58,15 @@ class AgendaAdmin(admin.ModelAdmin):
     list_filter = ("waktu_mulai",)
     search_fields = ("nama_kegiatan", "tempat", "keterangan")
     ordering = ("-waktu_mulai",)
+
+
+@admin.register(Dokumen)
+class DokumenAdmin(admin.ModelAdmin):
+    list_display = (
+        "judul",
+        "tanggal_upload",
+        "dipublikasikan",
+    )
+    list_filter = ("dipublikasikan", "tanggal_upload")
+    search_fields = ("judul", "deskripsi")
+    ordering = ("-tanggal_upload",)

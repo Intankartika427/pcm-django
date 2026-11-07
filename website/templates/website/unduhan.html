@@ -1,0 +1,60 @@
+
+{% extends "website/base.html" %}
+
+{% block title %}Unduhan Dokumen | PCM Solo Utara{% endblock %}
+
+{% block content %}
+
+<section class="agenda-section">
+
+    <h1>Dokumen</h1>
+
+    <p class="agenda-intro">
+        Berikut adalah dokumen PCM Solo Utara
+        yang tersedia untuk diunduh oleh pengunjung.
+    </p>
+
+    {% if daftar_dokumen %}
+
+    <div class="agenda-grid">
+
+        {% for dokumen in daftar_dokumen %}
+
+        <article class="agenda-card">
+
+            <h2>{{ dokumen.judul }}</h2>
+
+            {% if dokumen.deskripsi %}
+                <p>{{ dokumen.deskripsi }}</p>
+            {% endif %}
+
+            <p>
+                <small>
+                    Diunggah pada:
+                    {{ dokumen.tanggal_upload|date:"d F Y" }}
+                </small>
+            </p>
+
+            <p>
+                <a href="{{ dokumen.file.url }}" download>
+                    Unduh Dokumen ↓
+                </a>
+            </p>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <div class="agenda-card">
+        <p>Belum ada dokumen yang tersedia untuk diunduh.</p>
+    </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

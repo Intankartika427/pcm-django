@@ -132,3 +132,19 @@ class Agenda(models.Model):
 
     def __str__(self):
         return self.nama_kegiatan
+
+
+class Dokumen(models.Model):
+    judul = models.CharField(max_length=200)
+    deskripsi = models.TextField(blank=True)
+    file = models.FileField(upload_to="dokumen/")
+    tanggal_upload = models.DateTimeField(auto_now_add=True)
+    dipublikasikan = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = "Dokumen"
+        verbose_name_plural = "Data Dokumen"
+        ordering = ["-tanggal_upload"]
+
+    def __str__(self):
+        return self.judul

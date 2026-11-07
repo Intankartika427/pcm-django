@@ -8,6 +8,7 @@ from .models import (
     AmalUsaha,
     Berita,
     Agenda,
+    Dokumen,
 )
 
 def profil(request):
@@ -92,3 +93,15 @@ def daftar_agenda(request):
     }
 
     return render(request, "website/agenda_list.html", context)
+
+
+def daftar_dokumen(request):
+    dokumen = Dokumen.objects.filter(
+        dipublikasikan=True
+    ).order_by("-tanggal_upload")
+
+    context = {
+        "daftar_dokumen": dokumen,
+    }
+
+    return render(request, "website/unduhan.html", context)
