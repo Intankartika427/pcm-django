@@ -1,0 +1,32 @@
+[
+{
+  "model": "website.agenda",
+  "pk": 1,
+  "fields": {
+    "nama_kegiatan": "Pengajian SENIN MALAM PCM Solo Utara #Pekan ke – 2 Oktober 2026",
+    "waktu_mulai": "2026-10-12T20:00:00Z",
+    "tempat": "Masjid At Taqwa (Jl. Tarumanegara II No.29, Banyuanyar, Kec.Banjarsari, Kota Surakarta.",
+    "keterangan": "Pengajian SENIN MALAM PCM Solo Utara #Pekan ke – 2 Oktober 2026 “KEMUHAMMADIYAHAN” Bersama K.H. Ali Muhson, M.Ag., M.M."
+  }
+},
+{
+  "model": "website.agenda",
+  "pk": 2,
+  "fields": {
+    "nama_kegiatan": "Pengajian Senin Malam PCM Solo Utara dengan tema \"Adab Seorang Muslim\" (Bersama Al-Ust. Wahyudi Umar A. al-Hafidz, M.Pd.).",
+    "waktu_mulai": "2026-11-28T20:00:00Z",
+    "tempat": "Masjid Al Fitroh, Jl. Popda, Nusukan, Kec. Banjarsari, Kota Surakarta.",
+    "keterangan": "Penyelenggara adalah Pimpinan Cabang Muhammadiyah (PCM) Solo Utara. Acara terbuka untuk umum guna menjalin silaturahim dan memperkokoh iman dengan ilmu dan amal."
+  }
+},
+{
+  "model": "website.agenda",
+  "pk": 3,
+  "fields": {
+    "nama_kegiatan": "Pengajian Akbar Hari BerMuhammadiyah dengan tema \"Meneladani Nabi, Mencerahkan Negeri\" (Bersama Ust. Pujiono, S.Pd., S.Si, MM. / Dai Wayang Golek Pitutur).",
+    "waktu_mulai": "2026-09-06T06:00:00Z",
+    "tempat": "Masjid Al Amin Bibis Luhur (PRM Nusukan Timur), Kel. Nusukan, Kec. Banjarsari, Kota Surakarta.",
+    "keterangan": "Dimeriahkan dengan berbagai kegiatan pendukung seperti cek kesehatan gratis, stan pendidikan/buku, serta bazar/sembako murah."
+  }
+}
+]

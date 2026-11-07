@@ -1,0 +1,90 @@
+[
+{
+  "model": "website.amalusaha",
+  "pk": 1,
+  "fields": {
+    "nama": "SD Muhammadiyah 3 Surakarta",
+    "bidang": "pendidikan",
+    "deskripsi": "SD Muhammadiyah 3 Surakarta (atau SD Muhammadiyah 3 Nusukan) adalah sekolah dasar Islam unggulan yang terletak di wilayah Solo Utara yang memiliki visi “Menjadikan sekolah yang menghasilkan pribadi muslim yang berkualitas, mandiri, percaya diri, dan mampu menghadapi globalisasi dengan IMTAQ dan IPTEK”. SD Muhammadiyah 3 Surakarta memiliki kegiatan pembiasaan keagamaan seperti murotal dan tahfidz Al-Qur'an pagi, salat Dhuha, salat Dzuhur dan Ashar berjamaah, pembiasaan 5S (senyum, salam, sopan, santun, sedekah), serta kegiatan Ahad pagi.",
+    "alamat": "Jl. Singosari Utara I No. 13, Nusukan, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57135",
+    "gambar": "amal_usaha/Screenshot_2026-10-29_150922.png"
+  }
+},
+{
+  "model": "website.amalusaha",
+  "pk": 2,
+  "fields": {
+    "nama": "SMP Muhammadiyah 2 Surakarta",
+    "bidang": "pendidikan",
+    "deskripsi": "SMP Muhammadiyah 2 Surakarta (juga dikenal dengan singkatan MUDASKA) merupakan salah satu sekolah menengah pertama swasta Islam terkemuka yang berlokasi di Banjarsari, Surakarta. Sekolah ini telah terakreditasi A dan berkomitmen untuk mengintegrasikan metode pendidikan modern dengan nilai-nilai Islami guna menciptakan ekosistem belajar yang kreatif, kompetitif, dan berkarakter. SMP Muhammadiyah 2 Surakarta merupakan sekolah yang berkomitmen mewujudkan lingkungan belajar yang bersih, sehat, hijau, dan berkelanjutan melalui implementasi Program Adiwiyata. Seluruh warga sekolah berperan aktif dalam membangun budaya peduli.",
+    "alamat": "Jl. Kerinci No.15, Banjarsari, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57136",
+    "gambar": "amal_usaha/Picture2.png"
+  }
+},
+{
+  "model": "website.amalusaha",
+  "pk": 3,
+  "fields": {
+    "nama": "SMK Muhammadiyah 5 Surakarta",
+    "bidang": "pendidikan",
+    "deskripsi": "SMK Muhammadiyah 5 Surakarta (dikenal juga dengan julukan Mulia of Art | Fashion Design School) adalah Sekolah Menengah Kejuruan swasta yang berlokasi di Kota Surakarta, Jawa Tengah.",
+    "alamat": "Jl. Kerinci, Banjarsari, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57136",
+    "gambar": "amal_usaha/Picture3.png"
+  }
+},
+{
+  "model": "website.amalusaha",
+  "pk": 4,
+  "fields": {
+    "nama": "Universitas Muhammadiyah PKU Surakarta",
+    "bidang": "pendidikan",
+    "deskripsi": "Universitas Muhammadiyah PKU Surakarta (UMPKU) adalah perguruan tinggi swasta di Kota Surakarta, Jawa Tengah, yang dikelola oleh Persyarikatan Muhammadiyah. Kampus ini resmi bertransformasi menjadi universitas pada tahun 2025, yang sebelumnya berkembang dari Akademi Perawat (AKPER) pada tahun 1993, STIKES PKU Muhammadiyah Surakarta, dan ITS PKU Muhammadiyah Surakarta.",
+    "alamat": "Jl. Tulang Bawang Selatan No. 26, Kadipiro, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57136",
+    "gambar": "amal_usaha/Picture4.png"
+  }
+},
+{
+  "model": "website.amalusaha",
+  "pk": 5,
+  "fields": {
+    "nama": "Toko Amaliyah Q-ta",
+    "bidang": "ekonomi",
+    "deskripsi": "Toko Amaliyah Q-ta (sering disebut Toko Amaliah Qita) adalah toko ritel/kebutuhan yang terafiliasi atau beroperasi di lingkungan Pimpinan Cabang Muhammadiyah (PCM) Solo Utara",
+    "alamat": "Jl. Samudra Pasai, Komplang, Kadipiro, Kec. Banjarsari, Kota Surakarta, Jawa Tengah 57136",
+    "gambar": "amal_usaha/Picture5.png"
+  }
+},
+{
+  "model": "website.amalusaha",
+  "pk": 6,
+  "fields": {
+    "nama": "Lazismu",
+    "bidang": "ekonomi",
+    "deskripsi": "Bidang ekonomi berfokus pada pemberdayaan masyarakat melalui penguatan usaha dan peningkatan kemandirian ekonomi. Kegiatannya dapat berupa dukungan bagi usaha mikro, kecil, dan menengah (UMKM), bantuan modal usaha, serta pendampingan agar masyarakat dapat mengembangkan usaha dan meningkatkan kesejahteraan secara berkelanjutan.",
+    "alamat": "belum diketahui",
+    "gambar": "amal_usaha/Picture6.png"
+  }
+},
+{
+  "model": "website.amalusaha",
+  "pk": 7,
+  "fields": {
+    "nama": "Lazismu",
+    "bidang": "pendidikan",
+    "deskripsi": "Bidang pendidikan bertujuan membantu masyarakat memperoleh kesempatan belajar yang lebih baik. Bentuk kegiatannya dapat mencakup bantuan biaya pendidikan, beasiswa bagi siswa yang membutuhkan, penyediaan perlengkapan sekolah, serta dukungan terhadap kegiatan pendidikan untuk meningkatkan kualitas sumber daya manusia.",
+    "alamat": "Belum Diketahui",
+    "gambar": "amal_usaha/Picture7.png"
+  }
+},
+{
+  "model": "website.amalusaha",
+  "pk": 8,
+  "fields": {
+    "nama": "Lazismu",
+    "bidang": "sosial",
+    "deskripsi": "Bidang sosial kemanusiaan berfokus pada kepedulian dan pelayanan kepada masyarakat yang membutuhkan. Kegiatan yang dapat dilakukan antara lain penyaluran bantuan sosial, santunan bagi kelompok rentan, bantuan bagi korban bencana, serta dukungan untuk memenuhi kebutuhan dasar masyarakat dalam situasi darurat maupun kondisi sosial tertentu.",
+    "alamat": "Belum Diketahui",
+    "gambar": "amal_usaha/Picture8.png"
+  }
+}
+]
