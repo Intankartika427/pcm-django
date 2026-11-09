@@ -8,6 +8,7 @@ from .models import (
     Berita,
     Agenda,
     Dokumen,
+    TautanTerkait,
 )
 
 
@@ -70,3 +71,15 @@ class DokumenAdmin(admin.ModelAdmin):
     list_filter = ("dipublikasikan", "tanggal_upload")
     search_fields = ("judul", "deskripsi")
     ordering = ("-tanggal_upload",)
+
+@admin.register(TautanTerkait)
+class TautanTerkaitAdmin(admin.ModelAdmin):
+    list_display = (
+        "nama",
+        "url",
+        "urutan",
+        "aktif",
+    )
+    list_filter = ("aktif",)
+    search_fields = ("nama", "deskripsi")
+    ordering = ("urutan", "nama")

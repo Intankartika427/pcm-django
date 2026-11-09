@@ -148,3 +148,18 @@ class Dokumen(models.Model):
 
     def __str__(self):
         return self.judul
+    
+class TautanTerkait(models.Model):
+    nama = models.CharField(max_length=200)
+    url = models.URLField()
+    deskripsi = models.TextField(blank=True)
+    urutan = models.PositiveIntegerField(default=0)
+    aktif = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "Tautan Terkait"
+        verbose_name_plural = "Data Tautan Terkait"
+        ordering = ["urutan", "nama"]
+
+    def __str__(self):
+        return self.nama    
