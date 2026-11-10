@@ -1,5 +1,8 @@
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect
+from django.contrib import messages
+from .forms import PesanMasukForm
 
 from .models import (
     ProfilOrganisasi,
@@ -121,3 +124,29 @@ def daftar_tautan(request):
         "website/tautan.html",
         context,
     )
+
+
+def kirim_pesan(request):
+    if request.method == "POST":
+        form = PesanMasukForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request,
+                "Pesan Anda berhasil dikirim. Terima kasih!"
+            )
+            return redirect("website:kirim_pesan")
+    else:
+        form = PesanMasukForm()
+
+    context = {
+        "form": form,
+    }
+
+    return render(
+        request,
+        "website/kirim_pesan.html",
+        context,
+    )
+

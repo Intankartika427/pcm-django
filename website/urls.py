@@ -18,4 +18,5 @@ urlpatterns = [
     path("agenda/", views.daftar_agenda, name="daftar_agenda"),
     path("unduhan/", views.daftar_dokumen, name="daftar_dokumen"),
     path("tautan/",views.daftar_tautan,name="daftar_tautan"),
+    path("kirim-pesan/", views.kirim_pesan, name="kirim_pesan"),
 ]
