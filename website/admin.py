@@ -9,6 +9,7 @@ from .models import (
     Agenda,
     Dokumen,
     TautanTerkait,
+    PesanMasuk,
 )
 
 
@@ -83,3 +84,25 @@ class TautanTerkaitAdmin(admin.ModelAdmin):
     list_filter = ("aktif",)
     search_fields = ("nama", "deskripsi")
     ordering = ("urutan", "nama")
+
+
+@admin.register(PesanMasuk)
+class PesanMasukAdmin(admin.ModelAdmin):
+    list_display = (
+        "nama",
+        "email",
+        "subjek",
+        "waktu_kirim",
+        "sudah_dibaca",
+    )
+
+    list_filter = ("sudah_dibaca", "waktu_kirim")
+    search_fields = ("nama", "email", "subjek", "pesan")
+    readonly_fields = (
+        "nama",
+        "email",
+        "subjek",
+        "pesan",
+        "waktu_kirim",
+    )
+    ordering = ("-waktu_kirim",)
