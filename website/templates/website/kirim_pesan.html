@@ -1,0 +1,71 @@
+
+{% extends "website/base.html" %}
+
+{% block title %}Kirim Pesan | PCM Solo Utara{% endblock %}
+
+{% block content %}
+<section class="agenda-section">
+
+    <h1>Kirim Pesan</h1>
+
+    <p class="agenda-intro">
+        Silakan isi formulir berikut untuk mengirim
+        pesan kepada PCM Solo Utara.
+    </p>
+
+    <div class="content-section">
+
+        {% if messages %}
+            {% for message in messages %}
+                <p role="status">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                {{ form.non_field_errors }}
+            {% endif %}
+
+            {% for field in form %}
+                <div style="margin-bottom: 20px;">
+
+                    <label for="{{ field.id_for_label }}">
+                        <strong>{{ field.label }}</strong>
+                    </label>
+
+                    <div>
+                        {{ field }}
+                    </div>
+
+                    {% if field.errors %}
+                        <div style="color: #9b3434;">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+
+            <button
+                type="submit"
+                style="
+                    background: #176b45;
+                    color: white;
+                    padding: 12px 24px;
+                    border: none;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: bold;
+                "
+            >
+                Kirim Pesan
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+{% endblock %}
