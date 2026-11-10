@@ -163,3 +163,21 @@ class TautanTerkait(models.Model):
 
     def __str__(self):
         return self.nama    
+
+
+class PesanMasuk(models.Model):
+    nama = models.CharField(max_length=200)
+    email = models.EmailField()
+    subjek = models.CharField(max_length=200)
+    pesan = models.TextField()
+    waktu_kirim = models.DateTimeField(auto_now_add=True)
+    sudah_dibaca = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = "Pesan Masuk"
+        verbose_name_plural = "Data Pesan Masuk"
+        ordering = ["-waktu_kirim"]
+
+    def __str__(self):
+        return f"{self.nama} - {self.subjek}"
+
