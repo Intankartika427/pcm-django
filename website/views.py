@@ -12,7 +12,6 @@ from .models import (
     Berita,
     Agenda,
     Dokumen,
-    TautanTerkait,
 )
 
 def profil(request):
@@ -110,22 +109,6 @@ def daftar_dokumen(request):
 
     return render(request, "website/unduhan.html", context)
 
-def daftar_tautan(request):
-    tautan = TautanTerkait.objects.filter(
-        aktif=True
-    ).order_by("urutan")
-
-    context = {
-        "daftar_tautan": tautan,
-    }
-
-    return render(
-        request,
-        "website/tautan.html",
-        context,
-    )
-
-
 def kirim_pesan(request):
     if request.method == "POST":
         form = PesanMasukForm(request.POST)
@@ -149,4 +132,3 @@ def kirim_pesan(request):
         "website/kirim_pesan.html",
         context,
     )
-
