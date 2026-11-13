@@ -14,7 +14,7 @@ venv/
 
 # Django
 *.log
-db.sqlite3
+*.sqlite3
 media/
 !media/
 media/*
@@ -26,3 +26,12 @@ media/*
 # IDE
 .vscode/
 .idea/
+
+# Local backup and source data
+data_pcm/
+*_asli.json
+*.zip
+
+# Backup database dan media
+*.dump
+media_backup.zip

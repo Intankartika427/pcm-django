@@ -1,3 +1,4 @@
+
 # Tahap 1: build aplikasi
 FROM python:3.14-slim AS builder
 
@@ -11,7 +12,7 @@ WORKDIR /app
 
 COPY pyproject.toml uv.lock ./
 
-RUN uv sync --frozen --no-dev
+RUN uv sync --frozen --no-dev --no-install-project
 
 COPY . .
 
@@ -19,6 +20,7 @@ RUN SECRET_KEY=build-only-secret \
     DEBUG=False \
     ALLOWED_HOSTS=localhost \
     uv run --no-sync python manage.py collectstatic --noinput
+
 
 # Tahap 2: image untuk menjalankan aplikasi
 FROM python:3.14-slim
@@ -30,17 +32,20 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 ENV PATH="/app/.venv/bin:$PATH" \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PORT=8000
+    PORT=8000 \
+    UV_CACHE_DIR=/tmp/uv-cache
 
 COPY --from=builder /app /app
 
-RUN mkdir -p /app/media /app/staticfiles \
+RUN mkdir -p /app/media /app/staticfiles /tmp/uv-cache \
     && groupadd --system django \
     && useradd --system --gid django django \
-    && chown -R django:django /app
+    && chown -R django:django /app \
+    && chown -R django:django /tmp/uv-cache
 
 USER django
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "uv run --no-sync python manage.py migrate && exec uv run --no-sync gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000}"]
+
+CMD ["sh", "-c", "uv run --no-sync python manage.py migrate && exec uv run --no-sync gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --no-control-socket"]

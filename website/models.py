@@ -10,7 +10,7 @@ class ProfilOrganisasi(models.Model):
     visi = models.TextField(blank=True)
     misi = models.TextField(blank=True)
     alamat = models.TextField(blank=True)
-    telepon = models.CharField(max_length=30, blank=True)
+    telepon = models.CharField(max_length=50, blank=True)
     email = models.EmailField(blank=True)
     gambar = models.ImageField(
         upload_to="profil/",
