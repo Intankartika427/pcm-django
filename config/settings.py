@@ -22,22 +22,27 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    "SECRET_KEY",
-    "django-insecure-local-development-only"
+# "or" dipakai (bukan nilai default get) supaya SECRET_KEY= yang kosong di .env
+# tidak membuat Django error saat start.
+SECRET_KEY = (
+    os.environ.get("SECRET_KEY")
+    or "django-insecure-local-development-only"
 )
 
-DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
+# Default True agar mudah dijalankan lokal di VS Code.
+# Di server/Docker, set DEBUG=False lewat file .env.
+DEBUG = (os.environ.get("DEBUG") or "True").strip().lower() == "true"
 
-ALLOWED_HOSTS = os.environ.get(
-    "ALLOWED_HOSTS",
-    "localhost,127.0.0.1"
-).split(",")
 
-CSRF_TRUSTED_ORIGINS = os.environ.get(
-    "CSRF_TRUSTED_ORIGINS",
-    ""
-).split(",") if os.environ.get("CSRF_TRUSTED_ORIGINS") else []
+def _env_list(name, default=""):
+    """Baca env berformat 'a,b,c' menjadi list, abaikan item kosong."""
+    raw = os.environ.get(name) or default
+    return [item.strip() for item in raw.split(",") if item.strip()]
+
+
+ALLOWED_HOSTS = _env_list("ALLOWED_HOSTS", "localhost,127.0.0.1")
+
+CSRF_TRUSTED_ORIGINS = _env_list("CSRF_TRUSTED_ORIGINS")
 
 
 # Application definition
@@ -86,7 +91,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL = (os.environ.get("DATABASE_URL") or "").strip()
 
 if DATABASE_URL:
     DATABASES = {
@@ -142,12 +147,22 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+# Saat DEBUG=True (lokal) pakai storage biasa supaya tidak perlu collectstatic.
+# Storage "Manifest" hanya dipakai di produksi (DEBUG=False); di sana
+# `python manage.py collectstatic` wajib dijalankan lebih dulu
+# (Dockerfile sudah melakukannya otomatis).
+STATICFILES_BACKEND = (
+    "django.contrib.staticfiles.storage.StaticFilesStorage"
+    if DEBUG
+    else "whitenoise.storage.CompressedManifestStaticFilesStorage"
+)
+
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": STATICFILES_BACKEND,
     },
 }
 
