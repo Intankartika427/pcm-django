@@ -31,7 +31,7 @@ SECRET_KEY = (
 
 # Default True agar mudah dijalankan lokal di VS Code.
 # Di server/Docker, set DEBUG=False lewat file .env.
-DEBUG = (os.environ.get("DEBUG") or "True").strip().lower() == "true"
+DEBUG = (os.environ.get("DEBUG") or "False").strip().lower() == "true"
 
 
 def _env_list(name, default=""):
@@ -40,7 +40,14 @@ def _env_list(name, default=""):
     return [item.strip() for item in raw.split(",") if item.strip()]
 
 
-ALLOWED_HOSTS = _env_list("ALLOWED_HOSTS", "localhost,127.0.0.1")
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv(
+        "DJANGO_ALLOWED_HOSTS",
+        "localhost,127.0.0.1"
+    ).split(",")
+    if host.strip()
+]
 
 CSRF_TRUSTED_ORIGINS = _env_list("CSRF_TRUSTED_ORIGINS")
 
