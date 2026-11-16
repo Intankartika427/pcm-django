@@ -44,7 +44,7 @@ ALLOWED_HOSTS = [
     host.strip()
     for host in os.getenv(
         "DJANGO_ALLOWED_HOSTS",
-        "localhost,127.0.0.1",
+        
         "pcm-django-production.up.railway.app"
         
     ).split(",")
