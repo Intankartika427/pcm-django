@@ -31,7 +31,7 @@ SECRET_KEY = (
 
 # Default True agar mudah dijalankan lokal di VS Code.
 # Di server/Docker, set DEBUG=False lewat file .env.
-DEBUG = (os.environ.get("DEBUG") or "False").strip().lower() == "true"
+DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
 
 
 def _env_list(name, default=""):
@@ -45,6 +45,7 @@ ALLOWED_HOSTS = [
     for host in os.getenv(
         "DJANGO_ALLOWED_HOSTS",
         "localhost,127.0.0.1"
+        
     ).split(",")
     if host.strip()
 ]
