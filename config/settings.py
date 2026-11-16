@@ -166,12 +166,20 @@ STATICFILES_BACKEND = (
     else "whitenoise.storage.CompressedManifestStaticFilesStorage"
 )
 
+USE_SUPABASE_STORAGE = os.getenv(
+    "USE_SUPABASE_STORAGE", "False"
+).lower() == "true"
+
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
+        "BACKEND": (
+            "storages.backends.s3.S3Storage"
+            if USE_SUPABASE_STORAGE
+            else "django.core.files.storage.FileSystemStorage"
+        ),
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": STATICFILES_BACKEND,
     },
 }
 
