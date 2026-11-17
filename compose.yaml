@@ -1,14 +1,12 @@
-
-name: tes123
-
+name: Tes123
 services:
   db:
     image: postgres:17
     restart: unless-stopped
     environment:
-      POSTGRES_DB: pcm_db
-      POSTGRES_USER: pcm_user
-      POSTGRES_PASSWORD: local_dev_password
+      POSTGRES_DB: ${POSTGRES_DB:-pcm_db}
+      POSTGRES_USER: ${POSTGRES_USER:-pcm_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Isi POSTGRES_PASSWORD di .env}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -22,12 +20,10 @@ services:
   web:
     build: .
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
-      PORT: "8000"
-      DATABASE_URL: postgresql://pcm_user:local_dev_password@db:5432/pcm_db
-      DJANGO_DEBUG: "True"
-      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
-      USE_SUPABASE_STORAGE: "False"
+      PORT: 8000
     ports:
       - "8000:8000"
     volumes:
@@ -38,4 +34,4 @@ services:
 
 volumes:
   postgres_data:
-  media_data:
+  media_data: 
