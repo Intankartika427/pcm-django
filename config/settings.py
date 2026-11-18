@@ -31,7 +31,7 @@ SECRET_KEY = (
 
 # Default True agar mudah dijalankan lokal di VS Code.
 # Di server/Docker, set DEBUG=False lewat file .env.
-DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 
 def _env_list(name, default=""):
@@ -40,16 +40,7 @@ def _env_list(name, default=""):
     return [item.strip() for item in raw.split(",") if item.strip()]
 
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv(
-        "DJANGO_ALLOWED_HOSTS",
-        
-        "pcm-django-production.up.railway.app"
-        
-    ).split(",")
-    if host.strip()
-]
+ALLOWED_HOSTS = _env_list("ALLOWED_HOSTS", "localhost,127.0.0.1")
 
 CSRF_TRUSTED_ORIGINS = _env_list("CSRF_TRUSTED_ORIGINS")
 
