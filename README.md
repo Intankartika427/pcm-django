@@ -36,8 +36,8 @@ Penggunaan foto pengurus, kegiatan, dan bangunan PCM Solo Utara pada proyek ini 
 ## 2. Tabel Kontribusi
 | No. | Nama | NIM | Tanggung Jawab |
 | --- | --- | --- | --- |
-| 1 | Intan Kartika Sari | L200240006 | 1. Pengumpulan dan pencarian data informasi PCM<br>2. Inisialisasi proyek Django dan pengembangan fondasi website<br>3. Pembuatan template dan CSS<br>4. Pengembangan halaman utama<br>5. Pembuatan fitur profil organisasi<br>6. Pembuatan fitur Pimpinan<br>7. Pembuatan fitur Ranting<br>8. Docker dan PostgreSQL<br>9. Penulisan data Readme |
-| 2 | Zola Icha Shafira | L200240032 | 1. Pengumpulan dan pencarian data informasi PCM<br>2. Pembuatan fitur Amal Usaha<br>3. Pembuatan fitur Berita<br>4. Pembuatan fitur Agenda Kegiatan<br>5. Docker<br>6. Pembuatan PPT |
+| 1 | Intan Kartika Sari | L200240006 | 1. Pengumpulan dan pencarian data informasi PCM<br>2. Inisialisasi proyek Django dan pengembangan fondasi website<br>3. Pembuatan template dan CSS<br>4. Pengembangan halaman utama<br>5. Pembuatan fitur profil organisasi<br>6. Pembuatan fitur Pimpinan<br>7. Pembuatan fitur Ranting<br>8. Docker dan PostgreSQL<br>9. Penulisan data Readme<br>10. Pembuatan Video |
+| 2 | Zola Icha Shafira | L200240032 | 1. Pengumpulan dan pencarian data informasi PCM<br>2. Pembuatan fitur Amal Usaha<br>3. Pembuatan fitur Berita<br>4. Pembuatan fitur Agenda Kegiatan<br>5. Docker<br>6. Pembuatan PPT<br>7. Pembuatan Video |
 | 3 | Muhammad Fadhlan | L200230285 | 1. Pembuatan fitur Dokumen<br>2. Pembuatan fitur Pesan Masuk<br>3. Docker dan PostgreSQL<br>4. Deployment<br>5. Pembuatan Video |
 | 4 | Raihan Daffa A.S | L200230278 | 1. Pembuatan fitur Tautan Terkait<br>2. Docker dan PostgreSQL<br>3. Deployment<br>4. Pembuatan Video |
 | 5 | M. Hafiz Azhari Y | L200210234 | 1. Docker<br>2. Pembuatan Video |
@@ -72,11 +72,12 @@ uv run python manage.py runserver
 ```bash
 docker compose up --build
 ```
-Website dapat diakses melalui: `http://localhost:8000`
+- **Membuka terminal baru**
 - **Mengisi data awal:**
 ```bash
 docker compose exec web uv run python manage.py seed_pcm
 ```
+- **Membuka localhost:8000 di browser**
 - **Membuat akun admin:**
 ```bash
 docker compose exec web uv run python manage.py createsuperuser
@@ -91,6 +92,7 @@ docker compose down -v
 ```
 - Perintah `docker compose down` mempertahankan named volume sehingga database dan media tetap tersedia ketika container dijalankan kembali.
 - Perintah `docker compose down -v` menghapus named volume, termasuk database dan media yang tersimpan di dalamnya.
+- Perintah `docker compose down -v` dapat menghapus semua data karena opsi -v memerintahkan Docker untuk menghapus volume yang digunakan oleh container dalam konfigurasi Docker Compose tersebut, termasuk volume database PostgreSQL.
 ## 4. URL Produksi, Platform, dan Database yang Dipilih
 - **URL Produksi:** https://pcm-django-production.up.railway.app/
 - **Platform:** Railway, alasannya yaitu karena platform ini menyediakan pengalaman pengembangan yang lebih sederhana dan cepat. Dengan Railway, pengembang dapat dengan mudah menghubungkan GitHub repository mereka dan memulai deploy aplikasi tanpa harus mengelola server secara manual. Railway juga menawarkan manajemen database yang otomatis dan pengaturan variabel pengembangan yang aman, sehingga memudahkan pengelolaan keamanan dan konsistensi. Selain itu, Railway mendukung deploy aplikasi dari Docker dan menawarkan template yang memudahkan pengembang untuk memulai dengan aplikasi yang telah dipersiapkan.
